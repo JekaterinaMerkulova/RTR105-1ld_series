@@ -1,0 +1,40 @@
+                  f(x)=cosh(x/2)
+       Dihotomijas metode - kods, versija 1
+                  
+#include <stdio.h>
+int main()
+{
+ float a=1, b=6, x, delta_x=5, funkca, funkcb, funkcx, y;
+ int k=0;
+
+ funkca=cosh(a/2); funkcb = cosh(b/2);
+ if(funkca*funkcb>0)
+    {
+    printf("Intervālā [%.2f;%.2f] cosh(x) funkcijai", a, b);
+    printf("sakņu nav(vai tājā ir pāru sakņu skaits)\n");
+    return 1;
+    }
+}
+
+        Dihotomijas metode - kods, nobīdīta cosh funkcija
+        
+#include<stdio.h>
+#include<math.h>
+float modified_cosh (float x , float A){
+return cosh(x/2)-A;}
+void main()
+{
+    float a, x, delta_x, b, y, A;
+    a=1;
+    b=6;
+printf ("Cien. liet. , lūdzu , ievadi A vērtību sekojošam vienādojumam: cosh(x/2)=A\n");
+scanf ("%f",&A);
+x=a;
+delta_x=5;
+printf ("\tx\ty\n");
+while (x<b)
+    {
+    printf("%10.1f%10.1f\n", x, modified_cosh(x/2, A));
+    x+=delta_x;
+    }
+}
