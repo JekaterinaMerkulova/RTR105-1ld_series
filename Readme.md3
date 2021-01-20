@@ -1,0 +1,74 @@
+                 f(x) = cosh (x/2)
+                Skaitliskās metodes
+              
+          Skaitliskā diferencēšana - kods(f'(x))
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+  double a=0, b=6, x, delta_x=1;
+  printf("\tx\t\tcosh(x/2)\t\tcosh\’(x/2)\n");
+  x=a;
+  while(x<=b)
+    {
+    printf("%10.2f\t%10.2f\t%10.2f\n", x, cosh(x/2), (cosh((x/2)+delta_x)-cosh((x/2))/delta_x));
+    x+=delta_x;
+    }
+    return 0;
+}
+
+           Skaitliskā diferencēšana - kods(2.)
+
+#include<stdio.h>
+#include<math.h>
+#define N 100
+int main()
+{
+  double y[N], y_prim[N-1];
+  double a=1, b=6, x, delta_x=(b-a)/(N-1);
+  int i=0;
+  
+  x=a;
+  //while(x<=b)
+  for(i=0;i<N;i++)
+    {
+     y[i]=cosh(x/2);
+     x+=delta_x;
+    }
+    
+    for(i=0;i<N-1;i++)
+    {
+     y_prim[i]=(y[i+1]-y[i])/delta_x;
+    }
+    
+    printf("\tx\t\tcosh(x/2)\t\tcosh\’(x/2)\n");
+    x=a;
+    for(i=0;i<N-1;i++)
+    {
+     printf("%10.2f\t%10.2f\t%10.2f\n", x, y[i], y_prim[i]);
+     x+=delta_x;
+    }
+    printf("%10.2f\t%10.2f\n", x, y[i]);
+    return 0;
+}
+
+                  Skaitliskā diferencēšana - kods(f''(x))
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+  double a=1.22, a1=3.78, a2=17.24, x, delta_x=1;
+  printf("\tx\t\t(sinh(x/2))/2\t\tsinh\’((x/2)/2)\n");
+  x=a;
+ printf("%10.2f\t%10.2f\t%10.2f\n", x, (sinh(x/2))/2, ((sinh(x/2)/2+delta_x)-((sinh(x/2)/2)/delta_x)));
+  
+  x=a1;
+ printf("%10.2f\t%10.2f\t%10.2f\n", x, (sinh(x/2))/2, ((sinh(x/2)/2+delta_x)-((sinh(x/2)/2)/delta_x)));
+    
+  x=a2;
+ printf("%10.2f\t%10.2f\t%10.2f\n", x, (sinh(x/2))/2, ((sinh(x/2)/2+delta_x)-((sinh(x/2)/2)/delta_x)));
+    x+=delta_x;
+    return 0;
+}
