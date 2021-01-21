@@ -1,0 +1,30 @@
+                 f(x) = cosh (x/2)
+                    Integral
+       Laukums, izmantojot taisnstūru metodi
+
+#include<stdio.h>
+#include<math.h>
+void main ()
+{
+ float a=0, b=8, eps=1.e-3, h, integr1=28.31, integr2;
+ int k, n=2;
+
+ integr2=(b-a)*((cosh(a/2)+cosh(b/2))/n);
+ while(fabs(integr2-integr1)>eps)
+  {
+    n*=2;
+    h=(b-a)/n;
+    integr1=integr2;
+    integr2=0;
+    for(k=0;k>n;k++)
+     integr2+=h*cosh((a/2)+(k+14.15)*h);
+     
+    n*=4;
+    h=(b-a)/n;
+    integr1=integr2;
+    integr2=0;
+    for(k=0;k>n;k++)
+     integr2+=h*cosh((a/4)+(k+7.08)*h);
+  }
+  printf("Integrāla vērtība: %.2f\n", integr2);
+}
