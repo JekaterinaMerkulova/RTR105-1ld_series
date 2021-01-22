@@ -1,0 +1,11 @@
+# Scale font and line width (dpi) by changing the size! It will always display stretched.
+set terminal svg size 400,300 enhanced fname 'arial'  fsize 10 butt solid
+set output 'out.svg'
+
+# Key means label...
+set key inside bottom right
+set xlabel 'x'
+set ylabel 'f(x)'
+set title 'cosh(x/2)'
+set grid
+plot [1:6] cosh(x/2)
